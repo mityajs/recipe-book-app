@@ -1,0 +1,41 @@
+<header>
+  <nav>
+    <button mat-button routerLink="/categories" routerLinkActive="activebutton">
+      Categories
+    </button>
+    <button
+      mat-button
+      routerLink="/all-recipes"
+      routerLinkActive="activebutton"
+    >
+      Recipes
+    </button>
+    <button
+      mat-button
+      routerLink="/favorites"
+      routerLinkActive="activebutton"
+      *ngIf="isAuth()"
+    >
+      Favorites
+    </button>
+  </nav>
+  <div class="profile-container">
+    <mat-icon *ngIf="isAuth()" [matMenuTriggerFor]="menu"
+      >account_circle</mat-icon
+    >
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item (click)="logout()" routerLink="categories">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Log out</span>
+      </button>
+    </mat-menu>
+    <div class="arrow" *ngIf="isAuth()"></div>
+    <button mat-stroked-button *ngIf="!isAuth()" routerLink="login">
+      SIGN UP
+    </button>
+  </div>
+</header>

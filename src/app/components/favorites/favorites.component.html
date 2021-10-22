@@ -1,0 +1,11 @@
+<div class="search-container">
+  <mat-icon>search</mat-icon>
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Ex. Pizza" />
+  </mat-form-field>
+</div>
+<app-recipe-short
+  *ngFor="let recipe of recipes"
+  [liked]="true"
+></app-recipe-short>

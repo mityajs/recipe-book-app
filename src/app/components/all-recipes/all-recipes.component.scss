@@ -1,0 +1,11 @@
+.search-container {
+  margin: 65px auto -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+
+  mat-icon {
+    margin-top: -15px;
+  }
+}

@@ -1,0 +1,39 @@
+<div class="login-container">
+  <mat-card class="login-form">
+    <h3>LOGIN</h3>
+    <mat-form-field class="fullw" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="example@example.com"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ validateEmail() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="fullw" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        placeholder="password"
+        [formControl]="password"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ validatePassword() }}</mat-error>
+    </mat-form-field>
+    <div class="login-options fullw">
+      <div class="additional-options">
+        <a routerLink="/register">Register</a>
+        <a routerLink="/forgot-password">Forgot password</a>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/categories"
+        (click)="authorise()"
+      >
+        LOG IN
+      </button>
+    </div>
+  </mat-card>
+</div>

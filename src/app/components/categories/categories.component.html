@@ -1,0 +1,11 @@
+<div class="category-container">
+  <button
+    mat-stroked-button
+    class="category-btn"
+    *ngFor="let cat of categories"
+    routerLink="/all-recipes"
+  >
+    <img class="category-img" src="../../../assets/soup.png" alt="" />
+    {{ cat }}
+  </button>
+</div>
