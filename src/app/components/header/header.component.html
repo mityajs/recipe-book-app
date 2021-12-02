@@ -18,11 +18,36 @@
     >
       Favorites
     </button>
+    <button
+      mat-button
+      routerLink="/create-recipe"
+      routerLinkActive="activebutton"
+      *ngIf="isAuth()"
+    >
+      Create recipe
+    </button>
+    <button
+      mat-button
+      routerLink="/create-category"
+      routerLinkActive="activebutton"
+      *ngIf="isAuth() && user.role_id == 1"
+    >
+      Create category
+    </button>
+    <button
+      mat-button
+      routerLink="/create-ingredient"
+      routerLinkActive="activebutton"
+      *ngIf="isAuth() && user.role_id == 1"
+    >
+      Create ingredient
+    </button>
   </nav>
   <div class="profile-container">
-    <mat-icon *ngIf="isAuth()" [matMenuTriggerFor]="menu"
-      >account_circle</mat-icon
-    >
+    <div class="user" *ngIf="isAuth()" [matMenuTriggerFor]="menu">
+      <span>{{ user.user_name | capitalize }}</span>
+      <mat-icon>account_circle</mat-icon>
+    </div>
     <mat-menu #menu="matMenu" xPosition="before">
       <button mat-menu-item>
         <mat-icon>settings</mat-icon>

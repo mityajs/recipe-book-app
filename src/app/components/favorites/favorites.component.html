@@ -1,11 +1,21 @@
-<div class="search-container">
-  <mat-icon>search</mat-icon>
-  <mat-form-field appearance="fill">
-    <mat-label>Search</mat-label>
-    <input matInput placeholder="Ex. Pizza" />
-  </mat-form-field>
+<div class="favorites-container">
+  <div class="search-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Ex. Pizza" />
+    </mat-form-field>
+    <button mat-stroked-button class="search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="nothing-found" *ngIf="nothingFound">Whoops, nothing found!</div>
+  <div class="no-favorites" *ngIf="noFavorites">
+    You have no favorites yet, press the heart icon on the recipe to add it
+    here!
+  </div>
+  <app-recipe-short
+    *ngFor="let recipe of recipes"
+    [liked]="true"
+    [recipe]="recipe"
+  ></app-recipe-short>
 </div>
-<app-recipe-short
-  *ngFor="let recipe of recipes"
-  [liked]="true"
-></app-recipe-short>

@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="section-title">CREATE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <input matInput [formControl]="create" />
+  </mat-form-field>
+  <button mat-stroked-button (click)="createCategory()">Create category</button>
+</div>
+<div class="container">
+  <h3 class="section-title">DELETE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select [formControl]="delete">
+      <mat-option *ngFor="let cat of listOfCategories" [value]="cat">{{
+        cat.name | capitalize
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-stroked-button (click)="deleteCategory()">delete</button>
+</div>
+<div class="container">
+  <h3 class="section-title">UPDATE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select [formControl]="update">
+      <mat-option *ngFor="let cat of listOfCategories" [value]="cat">{{
+        cat.name | capitalize
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="upd">
+    <mat-label>New value</mat-label>
+    <input matInput [formControl]="update_value" />
+  </mat-form-field>
+  <button mat-stroked-button (click)="updateCheck()" *ngIf="!upd">edit</button>
+  <div *ngIf="upd" class="row-container">
+    <button mat-stroked-button (click)="updateCategory()">cancel</button>
+    <button mat-stroked-button (click)="updateCategory()">update</button>
+  </div>
+</div>

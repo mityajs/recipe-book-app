@@ -1,6 +1,4 @@
 footer {
-  position: fixed;
-  bottom: 0;
   text-align: center;
   height: 20px;
   width: 100vw;
@@ -10,7 +8,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
   background-color: white;
 
   img {

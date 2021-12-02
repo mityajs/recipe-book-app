@@ -1,27 +1,36 @@
 <mat-card class="recipe-short-container">
   <img src="../../../assets/soup.png" alt="soup" class="recipe-preview" />
   <div class="recipe-description">
-    <h2>Recipe name</h2>
+    <h2>{{ recipe.title | capitalize }}</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis impedit
-      et autem pariatur quibusdam tempore deserunt odit maiores quam sit!
+      {{ recipe.description | capitalize }}
     </p>
   </div>
   <div class="recipe-rating-favorites">
-    <div class="rating">
+    <div class="rating-container">
       <mat-icon>stars</mat-icon>
       <span>4.5 / 5</span>
     </div>
-    <button mat-button (click)="likeToggle()">
-      <mat-icon *ngIf="liked">favorite</mat-icon>
-      <mat-icon *ngIf="!liked">favorite_border</mat-icon>
-    </button>
+    <div
+      class="like-container"
+      mat-button
+      *ngIf="isAuth()"
+      (click)="likeToggle()"
+    >
+      <mat-icon *ngIf="liked" (click)="deleteFromFavorites()"
+        >favorite</mat-icon
+      >
+      <mat-icon *ngIf="!liked" (click)="addToFavorites()"
+        >favorite_border</mat-icon
+      >
+    </div>
   </div>
   <button
     class="info-btn"
     mat-stroked-button
     routerLink="/recipe"
     *ngIf="moreInfo"
+    (click)="openRecipe()"
   >
     <span>View!</span>
   </button>

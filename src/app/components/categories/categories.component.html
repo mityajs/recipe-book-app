@@ -1,11 +1,20 @@
-<div class="category-container">
+<div class="category-container" *ngIf="!category">
   <button
     mat-stroked-button
     class="category-btn"
     *ngFor="let cat of categories"
-    routerLink="/all-recipes"
+    (click)="category = cat"
   >
     <img class="category-img" src="../../../assets/soup.png" alt="" />
-    {{ cat }}
+    {{ cat | capitalize }}
   </button>
 </div>
+<button
+  mat-stroked-button
+  *ngIf="category"
+  class="back-to-cat"
+  (click)="category = ''"
+>
+  Back to Categories
+</button>
+<app-all-recipes *ngIf="category" [category]="category"></app-all-recipes>

@@ -1,0 +1,112 @@
+<div class="create-recipe-container">
+  <form [formGroup]="form">
+    <h3 class="section-title">GENERAL INFO</h3>
+    <div class="container">
+      <div class="inputs-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Categories</mat-label>
+          <mat-select formControlName="categories" multiple>
+            <mat-option
+              *ngFor="let cat of listOfCategories"
+              [value]="cat.name"
+              >{{ cat.name | capitalize }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button
+        class="create-button"
+        mat-stroked-button
+        *ngIf="!recipe_id"
+        (click)="create()"
+      >
+        Create
+      </button>
+      <button
+        class="create-button"
+        mat-stroked-button
+        *ngIf="!!recipe_id"
+        (click)="update()"
+      >
+        Update
+      </button>
+      <button class="create-button" mat-stroked-button (click)="logg()">
+        log
+      </button>
+    </div>
+    <h3 class="section-title">STEPS</h3>
+    <div formArrayName="steps">
+      <div
+        class="steps-container"
+        *ngFor="let step of steps.controls; let i = index"
+      >
+        <div class="step-description">
+          <div class="step-number">{{ i + 1 }}</div>
+          <mat-form-field appearance="fill">
+            <mat-label>Step description</mat-label>
+            <textarea matInput [formControlName]="i"></textarea>
+          </mat-form-field>
+        </div>
+        <button
+          mat-raised-button
+          color="warn"
+          class="step-delete"
+          (click)="deleteStep(i)"
+        >
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+      <button mat-stroked-button class="step-add" (click)="addStep()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <h3 class="section-title">INGREDIENTS</h3>
+    <div formArrayName="ingredients">
+      <div
+        class="ingredients-container"
+        *ngFor="let ingr of ingredients.controls; let i = index"
+      >
+        <div class="ingredient-description" [formGroupName]="i">
+          <mat-form-field appearance="fill" class="ingredient-select">
+            <mat-label>Ingredient</mat-label>
+            <mat-select formControlName="ingredient">
+              <mat-option
+                *ngFor="let ingr of listOfIngredients"
+                [value]="ingr.name"
+                >{{ ingr.name | capitalize }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="amount" />
+          </mat-form-field>
+        </div>
+        <button
+          mat-raised-button
+          color="warn"
+          class="ingredient-delete"
+          (click)="deleteIngredient(i)"
+        >
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </div>
+
+      <button
+        mat-stroked-button
+        class="ingredient-add"
+        (click)="addIngredient()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { User } from 'src/app/interfaces/user'
 import { AuthorisationService } from 'src/app/shared/services/authorisation.service'
 
 @Component({
@@ -6,13 +8,22 @@ import { AuthorisationService } from 'src/app/shared/services/authorisation.serv
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
-  constructor(private authService: AuthorisationService) {}
+export class HeaderComponent implements OnInit {
+  user: User = this.authService.getUser()
+  constructor(
+    public authService: AuthorisationService,
+    private router: Router
+  ) {}
 
   isAuth() {
-    return this.authService.getAuth()
+    this.user = this.authService.getUser()
+    return this.authService.isAuth()
   }
   logout() {
-    this.authService.setAuth(false)
+    this.authService.logout()
+  }
+
+  ngOnInit() {
+    if (!this.authService.isAuth()) this.router.navigate(['/categories'])
   }
 }

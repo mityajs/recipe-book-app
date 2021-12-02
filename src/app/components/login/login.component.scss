@@ -1,11 +1,12 @@
 .login-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .login-form {
+    position: relative;
     width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -22,6 +23,11 @@
       display: flex;
       justify-content: space-between;
 
+      .login-error {
+        color: darkred;
+        font-weight: bold;
+        line-height: 40px;
+      }
       .additional-options {
         display: flex;
         flex-direction: column;

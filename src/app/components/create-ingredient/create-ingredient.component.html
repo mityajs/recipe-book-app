@@ -1,0 +1,50 @@
+<div class="container">
+  <h3 class="section-title">CREATE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingredient</mat-label>
+    <input matInput [formControl]="createIngr" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [formControl]="createDesc" />
+  </mat-form-field>
+  <button mat-raised-button (click)="createIngredient()">
+    Create ingredient
+  </button>
+</div>
+<div class="container">
+  <h3 class="section-title">DELETE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingredient</mat-label>
+    <mat-select [formControl]="deleteIngr">
+      <mat-option *ngFor="let ingr of listOfIngredients" [value]="ingr">{{
+        ingr.name | capitalize
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="deleteIngredient()">delete</button>
+</div>
+<div class="container">
+  <h3 class="section-title">UPDATE</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingredient</mat-label>
+    <mat-select [formControl]="updateIngr">
+      <mat-option *ngFor="let ingr of listOfIngredients" [value]="ingr">{{
+        ingr.name | capitalize
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="upd">
+    <mat-label>Ingredient</mat-label>
+    <input matInput [formControl]="updateIngrName" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" *ngIf="upd">
+    <mat-label>Description</mat-label>
+    <input matInput [formControl]="updateIngrDesc" />
+  </mat-form-field>
+  <button mat-raised-button (click)="updateCheck()" *ngIf="!upd">edit</button>
+  <div class="row-container" *ngIf="upd">
+    <button mat-raised-button (click)="updateCancel()">cancel</button>
+    <button mat-raised-button (click)="updateIngredient()">update</button>
+  </div>
+</div>

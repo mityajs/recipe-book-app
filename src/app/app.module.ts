@@ -7,9 +7,14 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatInputModule } from '@angular/material/input'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatSelectModule } from '@angular/material/select'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
+import { MatDialogModule } from '@angular/material/dialog'
+
+import { CapitalizePipe } from './shared/pipes/capitalize.pipe'
 
 import { AppComponent } from './app.component'
 import { HeaderComponent } from './components/header/header.component'
@@ -23,6 +28,9 @@ import { LoginComponent } from './components/login/login.component'
 import { RegisterComponent } from './components/register/register.component'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component'
+import { CreateCategoryComponent } from './components/create-category/create-category.component'
+import { CreateIngredientComponent } from './components/create-ingredient/create-ingredient.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +46,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     RegisterComponent,
     ForgotPasswordComponent,
     PageNotFoundComponent,
+    CreateRecipeComponent,
+    CapitalizePipe,
+    CreateCategoryComponent,
+    CreateIngredientComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +60,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatCardModule,
     MatDividerModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    //create module
+    MatDialogModule,
+    FormsModule,
+    //TODO:create module
     RouterModule.forRoot([
       { path: '', redirectTo: 'categories', pathMatch: 'full' },
       { path: 'categories', component: CategoriesComponent },
@@ -60,6 +76,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
       { path: 'favorites', component: FavoritesComponent },
       { path: 'all-recipes', component: AllRecipesComponent },
       { path: 'recipe', component: RecipeComponent },
+      { path: 'create-recipe', component: CreateRecipeComponent },
+      { path: 'create-category', component: CreateCategoryComponent },
+      { path: 'create-ingredient', component: CreateIngredientComponent },
       { path: '**', component: PageNotFoundComponent },
     ]),
   ],

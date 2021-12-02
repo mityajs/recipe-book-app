@@ -7,6 +7,7 @@
         matInput
         placeholder="example@example.com"
         [formControl]="email"
+        value="admin"
         required
       />
       <mat-error *ngIf="email.invalid">{{ validateEmail() }}</mat-error>
@@ -15,6 +16,7 @@
       <mat-label>Password</mat-label>
       <input
         matInput
+        type="password"
         placeholder="password"
         [formControl]="password"
         required
@@ -26,12 +28,8 @@
         <a routerLink="/register">Register</a>
         <a routerLink="/forgot-password">Forgot password</a>
       </div>
-      <button
-        mat-raised-button
-        color="primary"
-        routerLink="/categories"
-        (click)="authorise()"
-      >
+      <div class="login-error" *ngIf="loginError">Wrong email or password!</div>
+      <button mat-raised-button color="primary" (click)="authorise()">
         LOG IN
       </button>
     </div>

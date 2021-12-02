@@ -1,11 +1,24 @@
-.search-container {
-  margin: 65px auto -20px;
+.recipes-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
+  flex-direction: column;
 
-  mat-icon {
-    margin-top: -15px;
+  .search-container {
+    margin: 20px auto -20px;
+    display: flex;
+    justify-content: center;
+    width: 300px;
+
+    .search {
+      margin-left: 10px;
+      height: 52px;
+      min-width: 52px;
+    }
+  }
+  .nothing-found {
+    padding: 20px;
+    margin: 20px auto;
+    background-color: darkred;
+    color: white;
+    border-radius: 4px;
   }
 }

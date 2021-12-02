@@ -6,18 +6,24 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 60px auto 0;
+  margin: 10px auto 20px;
 
   .category-btn {
     margin: 10px;
-    padding: 40px;
+    padding: 20px;
     font-size: 20px;
   }
 
   .category-img {
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     margin-right: 10px;
   }
+}
+.back-to-cat {
+  position: fixed;
+  height: 52px;
+  left: 20px;
+  top: 70px;
 }

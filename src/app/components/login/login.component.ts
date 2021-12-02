@@ -10,15 +10,16 @@ import { AuthorisationService } from 'src/app/shared/services/authorisation.serv
 export class LoginComponent {
   email = new FormControl('', [Validators.required, Validators.email])
   password = new FormControl('', [Validators.required])
+  loginError: boolean = false
 
   constructor(private authService: AuthorisationService) {}
 
   isAuth() {
-    return this.authService.getAuth()
+    return this.authService.isAuth()
   }
 
   authorise() {
-    this.authService.setAuth(true)
+    this.authService.auth(this.email.value, this.password.value)
   }
 
   validateEmail() {
